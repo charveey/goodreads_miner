@@ -45,7 +45,3 @@ python script.py --url https://www.goodreads.com/list/show/195641.Books_to_read_
 ## License
 
 This script is licensed under the [MIT License](LICENSE).
-
-```
-
-Note: Make sure to replace `[yourusername]` in the Dependencies section with the actual username if applicable, and add a link to the actual license file if it's different from the assumed "LICENSE" file.
