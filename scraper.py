@@ -1,11 +1,12 @@
-from random import randint
+import html
+import json
 import re
+import time
+from random import randint
 from urllib.error import HTTPError
 from urllib.request import urlopen
+
 import bs4
-import json
-import html
-import time
 
 
 def get_books(url: str) -> list[str]:
@@ -14,52 +15,14 @@ def get_books(url: str) -> list[str]:
     return [a.get("href") for a in soup.find_all("a", class_="bookTitle")]
 
 
-""" def get_num_pages(soup) -> int | None:
-    pages_element = soup.find("p", {"data-testid": "pagesFormat"})
-    if not pages_element:
-        return None
-    regex_search_result = re.search(r"([0-9,]*) *pages", pages_element.text)
-    if not regex_search_result:
-        return None
-    num_pages = regex_search_result.group(1).replace(",", "")
-    return int(num_pages)
-
-
-def get_book_format(soup) -> str | None:
-    format_element = soup.find("p", {"data-testid": "pagesFormat"})
-
-    if not format_element:
-        return None
-
-    # Expression régulière pour extraire le format du livre
-    regex_search_result = re.search(r"\d+ pages, (.+)$", format_element.text)
-
-    if not regex_search_result:
-        return None
-
-    book_format = regex_search_result.group(1)
-    return book_format """
-
-
 def get_isbn10(isbn) -> str | None:
-    if len(isbn) != 13:
+    if isbn is None or len(isbn) != 13:
         return None
     elif isbn.startswith("978"):
         isbn = isbn.replace("978", "")
         return isbn
     else:
         return None
-
-
-""" def get_isbn13(soup) -> str | None:
-    try:
-        for script_tag in soup.find_all("script", {"type": "application/ld+json"}):
-            data = json.loads(script_tag.string)
-            if "isbn" in data:
-                return data["isbn"]
-        return None
-    except Exception:
-        return None """
 
 
 def get_book_infos(soup) -> tuple:
@@ -71,7 +34,7 @@ def get_book_infos(soup) -> tuple:
                 isbn: str = data["isbn"]
                 title: str = html.unescape(data["name"])
                 num_pages: int = data["numberOfPages"]
-                format: str = data["bookFormat"]
+                book_format: str = data["bookFormat"]
                 author: str = html.unescape(data["author"][0]["name"])
                 if len(data["author"]) > 1:
                     for a in data["author"][1:]:
@@ -83,7 +46,7 @@ def get_book_infos(soup) -> tuple:
                     additional_authors.strip().rstrip(","),
                     isbn,
                     avg_rating,
-                    format,
+                    book_format,
                     num_pages,
                 )
         return (None, None, None, None, None, None, None)
@@ -106,15 +69,16 @@ def get_id(bookid) -> str:
 
 
 def parse_name(fullname: str) -> str | None:
-    names: list[str] = fullname.split(" ")
-    if len(names) == 2:
-        return f"{names[1]}, {names[0]}"
-    elif len(names) > 2:
-        last_name: str = names[-1:][0]
-        first_names: str = ""
-        for f_name in names[:-1]:
-            first_names += f"{f_name} "
-        return f"{last_name}, {first_names}"
+    if fullname is not None:
+        names: list[str] = fullname.split(" ")
+        if len(names) == 2:
+            return f"{names[1]}, {names[0]}"
+        elif len(names) > 2:
+            last_name: str = names[-1:][0]
+            first_names: str = ""
+            for f_name in names[:-1]:
+                first_names += f"{f_name} "
+            return f"{last_name}, {first_names}"
     else:
         return None
 

@@ -1,21 +1,24 @@
 import sys
 from datetime import date
-from goodreads_miner.scraper import get_books, scrape_book
-from goodreads_miner.save_csv import save_import
+
+from save_csv import save_import
+from scraper import get_books, scrape_book
 
 
 def main() -> None:
     if len(sys.argv) == 3 and sys.argv[1] == "--url":
         save_import(process_url(sys.argv[2]), f"{get_list_name(sys.argv[2])}.csv")
     elif len(sys.argv) == 3 and sys.argv[1] == "--file":
-        pass
+        save_import(process_file(sys.argv[2]), f"{sys.argv[2].split('.')[0]}.csv")
+        
     elif len(sys.argv) == 2 and sys.argv[1] == "--test":
         test = "https://www.goodreads.com/list/show/195641.Books_to_read_on_Kashmir"
         save_import(process_url(test), f"{get_list_name(test)}.csv")
     else:
-        sys.exit(
-            "Invalid usage.\nUse --url goodread_list_url or --file text_file_with_goodread_lists_url."
-        )
+        #sys.exit(
+        #    "Invalid usage.\nUse --url goodread_list_url or --file file_with_goodread_lists_urls."
+        #)
+        save_import(process_file("list.txt"), "test_file.csv")
 
 
 def process_url(url: str) -> list[dict]:
@@ -32,8 +35,21 @@ def process_url(url: str) -> list[dict]:
 
 
 def process_file(txtfile) -> list[dict]:
-    # TO-DO
-    ...
+    # TO-DO:
+    # check if the link matches the list or the book format first
+    # add a progress checker too
+    today = date.today()
+    links: list[str] = []
+    books: list[str] = []
+    books_data: list[dict] = []
+    with open(file=txtfile, encoding="utf8") as file:
+        for line in file:
+            links.append(line.rstrip("\n"))
+    for link in links:
+        books.extend(get_books(link))
+    for book in books:
+        books_data.append(scrape_book(book, str(today)))
+    return books_data
 
 
 def get_list_name(url: str) -> str:
