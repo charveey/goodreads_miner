@@ -1,46 +1,69 @@
-# Goodreads List Scraper
+# Goodreads Scraper
 
-This script allows you to scrape information about books from a Goodreads list and save it to a CSV file.
+A Python module and script for scraping book information from Goodreads.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+This project provides a Python module and script for scraping detailed information about books from Goodreads. It includes functions to retrieve book URLs, extract book details, and process Goodreads list URLs.
+
+## Features
+
+- Retrieve book URLs from a Goodreads page.
+- Extract detailed information about books from Goodreads using BeautifulSoup.
+- Process Goodreads list URLs and save the data to a CSV file.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/goodreads-scraper.git
+   cd goodreads-scraper
+   ```
+
+2. Install the dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ## Usage
 
-### To scrape a Goodreads list from a URL
+### Module usage
 
-```bash
-python script.py --url <goodreads_list_url>
+```python
+# Example module usage
+from scraper import get_books, scrape_book
+
+# Your code here...
 ```
 
-This will process the specified Goodreads list URL and save the information to a CSV file with a name based on the list.
-
-### To use a test URL
+### Script usage
 
 ```bash
-python script.py --test
+# Example script usage
+python main.py --url https://www.goodreads.com/list/show/195641.Books_to_read_on_Kashmir
 ```
 
-This will use a predefined test Goodreads list URL for testing purposes and save the information to a CSV file.
+For more options, run `python main.py --help`.
 
-### Other Options
+## Documentation
 
-- `--file`: To be implemented. Currently, it does not have any functionality.
-  
-## Dependencies
+Detailed documentation for the module functions and script is available in the code. Check the docstrings for each function in the `scraper.py` and `main.py` files.
 
-- [Beautiful Soup 4](https://code.launchpad.net/beautifulsoup): a Python library for pulling data out of HTML and XML files. It works with your favorite parser to provide idiomatic ways of navigating, searching, and modifying the parse tree. It commonly saves programmers hours or days of work.
-  
-## How It Works
+## Contributing
 
-1. The script takes command-line arguments to determine the operation.
-2. If a Goodreads list URL is provided, it scrapes book information from the list and saves it to a CSV file.
-3. If a test flag is provided, a predefined Goodreads list URL is used for testing purposes.
-4. The list name is extracted from the URL to create a meaningful CSV file name.
-
-## Usage Example
-
-```bash
-# Scrape a Goodreads list from a URL
-python script.py --url https://www.goodreads.com/list/show/195641.Books_to_read_on_Kashmir
-```
+Feel free to contribute to the project by opening issues or submitting pull requests. Contributions are always welcome!
 
 ## License
 
