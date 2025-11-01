@@ -149,18 +149,19 @@ def get_year_first_published(soup) -> int | None:
         return None
 
 
-def get_id(bookid) -> str:
+def get_id(bookid: str) -> str:
     """
-    Extracts the book ID from the given book URL.
+    Extracts the numeric book ID from a Goodreads book URL or string.
 
-    Parameters:
-    - bookid: The book URL containing the book ID.
-
-    Returns:
-    - str: The extracted book ID.
+    Examples:
+    - "/book/show/12345678.Some-Book-Title" -> "12345678"
+    - "12345678-Title" -> "12345678"
+    - "/book/show/1" -> "1"
     """
-    pattern = re.compile("([^.-]+)")
-    return pattern.search(bookid).group()
+
+    bookid = bookid.replace("/book/show/", "")
+    match = re.match(r"(\d+)", bookid)
+    return match.group(1) if match else ""
 
 
 def parse_name(fullname: str) -> str | None:
