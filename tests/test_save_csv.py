@@ -2,7 +2,7 @@ import os
 import tempfile
 import csv
 from unittest.mock import mock_open, patch, MagicMock
-from goodread_miner import save_import
+from goodreads_miner import save_import
 
 # Sample data
 sample_data = [

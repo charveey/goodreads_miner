@@ -1,7 +1,7 @@
 from unittest.mock import patch, mock_open
 import pytest
 from bs4 import BeautifulSoup
-from goodread_miner.scraper import (
+from goodreads_miner.scraper import (
     get_books,
     get_isbn10,
     get_book_infos,
@@ -82,7 +82,7 @@ def list_urls():
         # read_urls_from_file() now reads from the mocked file
         return [line.strip() for line in FAKE_DATA.splitlines() if line.strip()]
 
-@patch("goodread_miner.scraper.urlopen")
+@patch("goodreads_miner.scraper.urlopen")
 @patch("bs4.BeautifulSoup")
 def test_get_books_from_lists(mock_bs4, mock_urlopen, list_urls):
     # Simulate each list URL returning a page with 2 book links
@@ -99,7 +99,7 @@ def test_get_books_from_lists(mock_bs4, mock_urlopen, list_urls):
         books = get_books(url)
         assert books == ["/book/show/1", "/book/show/2"]
 
-@patch("goodread_miner.scraper.urlopen")
+@patch("goodreads_miner.scraper.urlopen")
 def test_scrape_book_full_flow(mock_urlopen):
     # Simulate a full book page with valid data
     html_content = """
@@ -132,7 +132,7 @@ def test_scrape_book_full_flow(mock_urlopen):
     assert result["Bookshelves"] == "testShelf"
     assert result["Average Rating"] == 3.8
 
-@patch("goodread_miner.scraper.urlopen", side_effect=Exception("Network error"))
+@patch("goodreads_miner.scraper.urlopen", side_effect=Exception("Network error"))
 def test_scrape_book_network_failure(mock_urlopen):
     with pytest.raises(Exception):
         # If urlopen fails (and no fallback implemented), expect exception

@@ -7,12 +7,21 @@ version = "0.3.0"
 description = "This project provides a Python module and script for scraping detailed information about books from Goodreads. It includes functions to retrieve book URLs, extract book details, and process Goodreads list URLs.S"
 readme = "README.md"
 requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
 dependencies = [
     "bs4>=0.0.2",
 ]
+[project.urls]
+Homepage = "https://github.com/charveey/goodreads_miner"
+Issues = "https://github.com/charveey/goodreads_miner/issues"
 [dependency-groups]
 dev = [
     "pytest>=7.4.4",
 ]
 [tool.setuptools.packages.find]
-include = ["goodread_miner*"]
+include = ["goodreads_miner*"]

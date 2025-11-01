@@ -1,7 +1,7 @@
 import sys
 from datetime import date
 from pathlib import Path
-from goodread_miner import scrape_book, get_books, save_import
+from goodreads_miner import scrape_book, get_books, save_import
 
 
 def main() -> None:

@@ -2,7 +2,7 @@ from pathlib import Path
 from unittest.mock import patch, mock_open
 import pytest
 import sys
-from goodread_miner import main as main_module
+from goodreads_miner import main as main_module
 
 DATA_FILE = "data/data.txt"
 
@@ -15,9 +15,9 @@ DATA_FILE = "data/data.txt"
     "https://www.goodreads.com/list/show/195860.Books_for_Players_of_Sid_Meier_s_Civilization_Games\n"
     "https://www.goodreads.com/list/show/195838.Best_Sci_Fi_and_Fantasy_reads\n"
 ))
-@patch("goodread_miner.main.save_import")
-@patch("goodread_miner.main.get_books", return_value=["/book/show/1", "/book/show/2"])
-@patch("goodread_miner.main.scrape_book", return_value={"Title": "Book1"})
+@patch("goodreads_miner.main.save_import")
+@patch("goodreads_miner.main.get_books", return_value=["/book/show/1", "/book/show/2"])
+@patch("goodreads_miner.main.scrape_book", return_value={"Title": "Book1"})
 def test_main_file(mock_scrape, mock_get_books, mock_save, mock_file):
     test_argv = ["main.py", "--file", DATA_FILE, "--bookshelf", "to-read", "--output_dir", "exports"]
     with patch.object(sys, "argv", test_argv):
@@ -47,9 +47,9 @@ def test_main_file(mock_scrape, mock_get_books, mock_save, mock_file):
 # ------------------------
 # Test: --url argument
 # ------------------------
-@patch("goodread_miner.main.save_import")
-@patch("goodread_miner.main.get_books", return_value=["/book/show/1"])
-@patch("goodread_miner.main.scrape_book", return_value={"Title": "TestBook"})
+@patch("goodreads_miner.main.save_import")
+@patch("goodreads_miner.main.get_books", return_value=["/book/show/1"])
+@patch("goodreads_miner.main.scrape_book", return_value={"Title": "TestBook"})
 def test_main_url(mock_scrape, mock_get_books, mock_save):
     url = "https://www.goodreads.com/list/show/195641.Books_to_read_on_Kashmir"
     test_argv = ["main.py", "--url", url, "--bookshelf", "favorites"]
@@ -91,9 +91,9 @@ def test_main_invalid_args():
 @patch("builtins.open", new_callable=mock_open, read_data=(
     "\nhttps://www.goodreads.com/list/show/195641.Books_to_read_on_Kashmir\n\n"
 ))
-@patch("goodread_miner.main.save_import")
-@patch("goodread_miner.main.get_books", return_value=["/book/show/1"])
-@patch("goodread_miner.main.scrape_book", return_value={"Title": "Book1"})
+@patch("goodreads_miner.main.save_import")
+@patch("goodreads_miner.main.get_books", return_value=["/book/show/1"])
+@patch("goodreads_miner.main.scrape_book", return_value={"Title": "Book1"})
 def test_main_file_empty_lines(mock_scrape, mock_get_books, mock_save, mock_file):
     test_argv = ["main.py", "--file", DATA_FILE]
     with patch.object(sys, "argv", test_argv):

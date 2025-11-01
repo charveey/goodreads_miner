@@ -1,7 +1,7 @@
 from unittest.mock import patch
 import json
 from bs4 import BeautifulSoup
-from goodread_miner.scraper import (
+from goodreads_miner.scraper import (
     get_books,
     get_isbn10,
     get_book_infos,
@@ -48,7 +48,7 @@ def test_get_id():
 # ------------------------
 # Test get_books (mock network)
 # ------------------------
-@patch("goodread_miner.scraper.urlopen")
+@patch("goodreads_miner.scraper.urlopen")
 def test_get_books(mock_urlopen):
     html_content = """
     <html>
@@ -109,7 +109,7 @@ def test_get_year_first_published_none():
 # ------------------------
 # Test scrape_book (mock network)
 # ------------------------
-@patch("goodread_miner.scraper.urlopen")
+@patch("goodreads_miner.scraper.urlopen")
 def test_scrape_book(mock_urlopen):
     html_content = """
     <html>

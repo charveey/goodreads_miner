@@ -66,7 +66,7 @@ uv install
 Run the main script using `uv`:
 
 ```bash
-uv run goodread_miner.main --file data/list.txt
+uv run goodreads_miner.main --file data/list.txt
 ```
 
 ### CLI Options
@@ -78,7 +78,7 @@ uv run goodread_miner.main --file data/list.txt
 Example :
 
 ```bash
-uv run goodread_miner.main --url https://www.goodreads.com/list/show/195641.Books_to_read_on_Kashmir
+uv run goodreads_miner.main --url https://www.goodreads.com/list/show/195641.Books_to_read_on_Kashmir
 ```
 
 Output:
@@ -91,8 +91,8 @@ Output:
 You can also use the package directly in Python:
 
 ```python
-from goodread_miner.scraper import get_books, scrape_book
-from goodread_miner.save_csv import save_import
+from goodreads_miner.scraper import get_books, scrape_book
+from goodreads_miner.save_csv import save_import
 
 books = get_books("https://www.goodreads.com/list/show/195641.Books_to_read_on_Kashmir")
 data = [scrape_book(url, "2025-11-01") for url in books]
@@ -103,9 +103,9 @@ save_import(data, "data/list.csv")
 
 Detailed docstrings are included in the code for all functions and classes in:
 
-- `goodread_miner/scraper.py`
-- `goodread_miner/save_csv.py`
-- `goodread_miner/main.py`
+- `goodreads_miner/scraper.py`
+- `goodreads_miner/save_csv.py`
+- `goodreads_miner/main.py`
 
 ## Running Tests
 
