@@ -1,8 +1,17 @@
+## [0.4.2] - 2025-11-01
+
+### 💼 Other
+
+- Add `uv.lock` to version bump commit
 ## [0.4.1] - 2025-11-01
 
 ### 💼 Other
 
 - Cleaned the build tooling
+
+### ⚙️ Miscellaneous Tasks
+
+- *(release)* V0.4.1
 ## [0.4.0] - 2025-11-01
 
 ### 🐛 Bug Fixes
