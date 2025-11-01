@@ -1,8 +1,17 @@
+## [0.4.3] - 2025-11-01
+
+### 💼 Other
+
+- Push release tag to origin during publishing
 ## [0.4.2] - 2025-11-01
 
 ### 💼 Other
 
 - Add `uv.lock` to version bump commit
+
+### ⚙️ Miscellaneous Tasks
+
+- *(release)* V0.4.2
 ## [0.4.1] - 2025-11-01
 
 ### 💼 Other
