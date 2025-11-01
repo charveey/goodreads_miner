@@ -18,6 +18,14 @@ A Python CLI tool and module for scraping book information from Goodreads lists 
 
 ## Introduction
 
+Currently, Goodreads **does not allow importing books directly from a list** into your account.  
+This tool solves that problem by:
+
+- Fetching one or multiple book lists  
+- Generating a CSV that can be imported into your Goodreads account  
+
+In short, it automates the tedious process of adding books manually.
+
 This project provides a Python package and CLI script for scraping detailed information about books from Goodreads. It includes functions to:
 
 - Retrieve book URLs from a Goodreads page
@@ -29,10 +37,9 @@ This project provides a Python package and CLI script for scraping detailed info
 
 ## Features
 
-- Retrieve book URLs from a Goodreads list page
-- Extract detailed information about books using BeautifulSoup
+- Fetch books from a single list or multiple lists
+- Generate a CSV ready for import into Goodreads
 - Save scraped data into CSV files
-- CLI interface via `uv run` for easy execution
 - Unit tests covering edge cases and file handling
 
 ---
@@ -42,7 +49,7 @@ This project provides a Python package and CLI script for scraping detailed info
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/goodreads-miner.git
+git clone https://github.com/charveey/goodreads-miner.git
 cd goodreads-miner
 ```
 
@@ -110,6 +117,12 @@ pytest tests
 
 - Mocks are used for network calls and file reads
 - Edge cases for parsing, scraping, and CSV saving are fully covered
+
+## TO-DO
+
+- Allow specifying which Bookshelf to add the books to in Goodreads
+- Add a `--output_dir` option to specify where the CSV file should be saved
+
 
 ## Contributing
 
