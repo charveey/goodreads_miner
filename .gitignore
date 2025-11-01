@@ -2,3 +2,7 @@
 txt.csv
 cliff.toml
 tasks.py
+*.egg-info
+dist
+build
+__pycache__/

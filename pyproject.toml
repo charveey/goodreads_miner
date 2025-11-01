@@ -1,14 +1,18 @@
+[build-system]
+requires = ["setuptools>=65.5.0", "wheel"]
+build-backend = "setuptools.build_meta"
 [project]
 name = "goodreads-miner"
-version = "0.2.1"
-description = "This project provides a Python module and script for scraping detailed information about books from Goodreads. It includes functions to retrieve book URLs, extract book details, and process Goodreads list URLs."
+version = "0.2.2"
+description = "This project provides a Python module and script for scraping detailed information about books from Goodreads. It includes functions to retrieve book URLs, extract book details, and process Goodreads list URLs.S"
 readme = "README.md"
 requires-python = ">=3.7"
 dependencies = [
     "bs4>=0.0.2",
 ]
-
 [dependency-groups]
 dev = [
     "pytest>=7.4.4",
 ]
+[tool.setuptools.packages.find]
+include = ["goodread_miner*"]
