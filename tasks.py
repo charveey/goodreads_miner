@@ -86,6 +86,10 @@ def release(level=None, exact_version=None, dry_run=False):
     # ----------------------
     run(f"git tag v{new_version}", dry_run=dry_run)
 
+    # 4b. Push tag to origin
+    run(f"git push origin v{new_version}", dry_run=dry_run)
+
+
     # ----------------------
     # 5. Clean dist directory
     # ----------------------
