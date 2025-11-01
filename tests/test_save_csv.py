@@ -1,5 +1,5 @@
 from unittest.mock import mock_open, patch, MagicMock
-from goodread_miner import save_csv
+from goodread_miner import save_import
 
 # Sample data
 sample_data = [
@@ -40,7 +40,7 @@ def test_save_import_default_filename(mock_csv_writer, mock_file):
     mock_writer_instance = MagicMock()
     mock_csv_writer.return_value = mock_writer_instance
 
-    save_csv.save_import(sample_data)
+    save_import(sample_data)
 
     # Check that open was called with default filename
     args, kwargs = mock_file.call_args
@@ -59,7 +59,7 @@ def test_save_import_custom_filename(mock_csv_writer, mock_file):
     mock_writer_instance = MagicMock()
     mock_csv_writer.return_value = mock_writer_instance
 
-    save_csv.save_import(sample_data, filename="custom_books.csv")
+    save_import(sample_data, filename="custom_books.csv")
 
     args, kwargs = mock_file.call_args
     assert "custom_books.csv" in args[0]
@@ -76,7 +76,7 @@ def test_save_import_empty_data(mock_csv_writer, mock_file):
     mock_writer_instance = MagicMock()
     mock_csv_writer.return_value = mock_writer_instance
 
-    save_csv.save_import([])
+    save_import([])
 
     mock_writer_instance.writeheader.assert_called_once()
     # writerow should not be called
