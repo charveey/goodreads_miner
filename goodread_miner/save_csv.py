@@ -5,7 +5,7 @@ import csv
 import os
 
 
-def save_import(data: list[dict], filename: str = "data.csv") -> None:
+def save_import(data: list[dict], filename: str = "data.csv", bookshelf: str = "imported by Goodreads miner", output_dir: str | None = None,) -> None:
     '''
     Saves the scraped book information into a CSV file.
 
@@ -54,9 +54,16 @@ def save_import(data: list[dict], filename: str = "data.csv") -> None:
         "Owned Copies",
     ]
 
-    file_path: str = os.path.join(os.getcwd(), os.path.dirname(__file__), filename)
+    # Resolve file path
+    base_dir = output_dir if output_dir else os.getcwd()
+    os.makedirs(base_dir, exist_ok=True)
+    file_path = os.path.join(base_dir, filename)
+
     with open(file_path, "w", newline="", encoding="utf8") as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=data_fields)
+        writer = csv.DictWriter(csvfile, fieldnames=data_fields, extrasaction="ignore")
         writer.writeheader()
+
         for row in data:
+            row["Bookshelves"] = bookshelf
+            row["Exclusive Shelf"] = bookshelf
             writer.writerow(row)

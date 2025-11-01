@@ -34,7 +34,7 @@ Usage Example:
 ```python
 book_url = "https://www.goodreads.com/book/show/12345678"
 today = "2023-12-24"
-bookshelf = "imported by Kev"
+bookshelf = "imported by Goodreads Miner"
 book_info = scrape_book(book_url, today, bookshelf)
 print(book_info)
 
@@ -189,7 +189,7 @@ def parse_name(fullname: str) -> str | None:
 
 
 def scrape_book(
-    book_url: str, today: str, bookshelf: str = "imported by Kev"
+    book_url: str, today: str, bookshelf: str = "imported by Goodreads Miner"
 ) -> dict[str, int | str | None]:
     """
     Scrapes detailed information about a book from the given Goodreads book URL.
@@ -197,7 +197,7 @@ def scrape_book(
     Parameters:
     - book_url (str): The URL of the book on Goodreads.
     - today (str): The current date in the format "YYYY-MM-DD".
-    - bookshelf (str): The name of the bookshelf. Default is "imported by Kev".
+    - bookshelf (str): The name of the bookshelf. Default is "imported by Goodreads Miner".
 
     Returns:
     - dict[str, int | str | None]: A dictionary containing various details such as title, author, ISBN, etc.
