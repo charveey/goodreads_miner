@@ -1,3 +1,8 @@
+## [0.4.0] - 2025-11-01
+
+### 🐛 Bug Fixes
+
+- Fix import namespaces
 ## [0.3.0] - 2025-11-01
 
 ### 🚀 Features
@@ -11,6 +16,10 @@
 ### 📚 Documentation
 
 - README.md update
+
+### ⚙️ Miscellaneous Tasks
+
+- *(release)* V0.3.0
 
 ### 🧪 Testing
 
