@@ -78,7 +78,7 @@ def release(level=None, exact_version=None, dry_run=False):
     # ----------------------
     # 3. Commit version bump and changelog
     # ----------------------
-    run("git add pyproject.toml CHANGELOG.md", dry_run=dry_run)
+    run("git add pyproject.toml CHANGELOG.md uv.lock", dry_run=dry_run)
     run(f'git commit -m "chore(release): v{new_version}"', dry_run=dry_run)
 
     # ----------------------
