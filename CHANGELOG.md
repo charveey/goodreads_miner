@@ -1,8 +1,17 @@
+## [0.4.1] - 2025-11-01
+
+### 💼 Other
+
+- Cleaned the build tooling
 ## [0.4.0] - 2025-11-01
 
 ### 🐛 Bug Fixes
 
 - Fix import namespaces
+
+### ⚙️ Miscellaneous Tasks
+
+- *(release)* V0.4.0
 ## [0.3.0] - 2025-11-01
 
 ### 🚀 Features
