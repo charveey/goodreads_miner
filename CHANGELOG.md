@@ -1,20 +1,9 @@
 ## [unreleased]
 
-### 🐛 Bug Fixes
+### 🚀 Features
 
-- Correct get_id function in scraper.py
-
-### 📚 Documentation
-
-- Update README.md
+- *(goodread_miner)* Restructure package, add tests, update dependencies and CLI
 
 ### ⚙️ Miscellaneous Tasks
 
-- Switch project execution from pip to uv
-- Folder structure clean up
-
-### 🧪 Testing
-
-- Mock file reads in test_scraper_edge.py
-- Mock urlopen and BeautifulSoup in get_books tests
-- Handle empty lines in list file for main.py tests
+- *(release)* Bump version to 0.2.0
