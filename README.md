@@ -123,7 +123,6 @@ pytest tests
 - Allow specifying which Bookshelf to add the books to in Goodreads
 - Add a `--output_dir` option to specify where the CSV file should be saved
 
-
 ## Contributing
 
 Feel free to contribute to the project by opening issues or submitting pull requests. Contributions are always welcome!

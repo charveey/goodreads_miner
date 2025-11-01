@@ -1,0 +1,55 @@
+[changelog]
+body = """
+{% if version %}\
+    ## [{{ version | trim_start_matches(pat="v") }}] - {{ timestamp | date(format="%Y-%m-%d") }}
+{% else %}\
+    ## [unreleased]
+{% endif %}\
+{% for group, commits in commits | group_by(attribute="group") %}
+    ### {{ group | striptags | trim | upper_first }}
+    {% for commit in commits %}
+        - {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
+            {% if commit.breaking %}[**breaking**] {% endif %}\
+            {{ commit.message | upper_first }}\
+    {% endfor %}
+{% endfor %}
+"""
+trim = true
+render_always = true
+output = "CHANGELOG.md"
+postprocessors = [
+    { pattern = "<REPO>", replace = "https://github.com/charveey/goodreads-miner" }
+]
+
+[git]
+conventional_commits = true
+filter_unconventional = true
+require_conventional = false
+split_commits = false
+commit_preprocessors = []
+protect_breaking_commits = true
+commit_parsers = [
+    { message = "^post", group = "<!-- 0 -->📝 Articles" },
+    { message = "^feat", group = "<!-- 1 -->🚀 Features" },
+    { message = "^fix", group = "<!-- 2 -->🐛 Bug Fixes" },
+    { message = "^doc", group = "<!-- 4 -->📚 Documentation" },
+    { message = "^perf", group = "<!-- 5 -->⚡ Performance" },
+    { message = "^refactor", group = "<!-- 3 -->🚜 Refactor" },
+    { message = "^style", group = "<!-- 6 -->🎨 Styling" },
+    { message = "^test", group = "<!-- 7 -->🧪 Testing" },
+    { message = "^chore\\(release\\): prepare for", skip = true },
+    { message = "^chore\\(deps.*\\)", skip = true },
+    { message = "^chore\\(pr\\)", skip = true },
+    { message = "^chore\\(pull\\)", skip = true },
+    { message = "^chore|^ci", group = "<!-- 7 -->⚙️ Miscellaneous Tasks" },
+    { body = ".*security", group = "<!-- 8 -->🛡️ Security" },
+    { message = "^revert", group = "<!-- 9 -->◀️ Revert" },
+    { message = ".*", group = "<!-- 10 -->💼 Other" }
+]
+filter_commits = false
+link_parsers = []
+use_branch_tags = false
+topo_order = false
+topo_order_commits = true
+sort_commits = "oldest"
+recurse_submodules = false
