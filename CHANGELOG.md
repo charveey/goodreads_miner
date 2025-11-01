@@ -1,4 +1,21 @@
-## [unreleased]
+## [0.3.0] - 2025-11-01
+
+### 🚀 Features
+
+- Support `--bookshelf` and `--output_dir` in main.py
+
+### 💼 Other
+
+- *(release)* Setuptools fixes
+
+### 📚 Documentation
+
+- README.md update
+
+### 🧪 Testing
+
+- Update main.py tests to support bookshelf keyword argument
+## [0.2.1] - 2025-11-01
 
 ### 🐛 Bug Fixes
 
