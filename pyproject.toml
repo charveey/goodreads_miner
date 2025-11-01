@@ -1,6 +1,6 @@
 [project]
 name = "goodreads-miner"
-version = "0.1.0"
+version = "0.2.0"
 description = "This project provides a Python module and script for scraping detailed information about books from Goodreads. It includes functions to retrieve book URLs, extract book details, and process Goodreads list URLs."
 readme = "README.md"
 requires-python = ">=3.7"
